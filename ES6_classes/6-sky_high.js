@@ -1,18 +1,28 @@
-export default class Building {
-  constructor(sqft) {
-    // Any class extending Building must implement below method
-    if (this.constructor !== Building && !this.evacuationWarningMessage) throw Error('Class extending Building must override evacuationWarningMessage');
+import Building from './5-building';
+
+export default class SkyHighBuilding extends Building {
+  constructor(sqft, floors) {
+    // call constructor of super class (Building)
+    super(sqft);
 
     // Create objs
-    this._sqft = sqft;
+    this._floors = floors;
   }
 
   // Methods
+
+  evacuationWarningMessage() {
+    return `Evacuate slowly the ${this.floors} floors`;
+  }
 
   // Setters
 
   // Getters
   get sqft() {
     return this._sqft;
+  }
+
+  get floors() {
+    return this._floors;
   }
 }
